@@ -11,15 +11,15 @@ RUN pip3 install SimpleITK
 RUN useradd -m -s /bin/bash -G users dcmnii
 WORKDIR /home/dcmnii
 ENV HOME="/home/dcmnii"
-
+#Copy Script over  
 COPY docker/scripts/nif.sh /home/dcmnii/nif.sh
-
+#Correct the Permissions
 RUN find $HOME -type d -exec chmod go=u {} + && \
     find $HOME -type f -exec chmod go=u {} + && \
     rm -rf $HOME/.npm $HOME/.conda $HOME/.empty
-
+RUN touch /home/dcmnii/nif.sh
+RUN chmod -R 777 /home/dcmnii/
 ENTRYPOINT ["/home/dcmnii/nif.sh"]
-
 
 ARG BUILD_DATE
 ARG VCS_REF

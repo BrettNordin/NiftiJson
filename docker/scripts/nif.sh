@@ -22,5 +22,11 @@ for subj in ${PLIST}; do
 		python3 /home/brett/winhome/Users/Brett/KHDATA/NIFTIJSON/docker/scripts/script.py $cur
 		
 	done
+	cd ${maindir}"/"$subj"/func/"
+	for file in "*"; do
+		cur=${maindir}"/"$subj"/func/"$file
+		python3 /home/brett/winhome/Users/Brett/KHDATA/NIFTIJSON/docker/scripts/script.py $cur
+		
+	done
 done
 
